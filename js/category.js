@@ -1,25 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Lấy tham số 'type' từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const categoryType = urlParams.get('type');
     
-    // Nếu không có category, quay về trang chủ
     if (!categoryType) {
         window.location.href = '../index.html';
         return;
     }
 
-    // 2. Cập nhật Tiêu đề trang & Banner
     const titleElement = document.getElementById('category-title');
     const descElement = document.getElementById('category-desc');
     let books = [];
 
+    // --- XỬ LÝ CÁC LOẠI DANH MỤC ĐẶC BIỆT ---
+    
     if (categoryType === 'all') {
+        // 1. TẤT CẢ SÁCH
         document.title = "Tất cả sách - BookStore";
         if(titleElement) titleElement.textContent = "Tất cả sách";
         if(descElement) descElement.textContent = "Khám phá toàn bộ kho tàng tri thức tại BookStore";
         if (typeof booksData !== 'undefined') books = [...booksData];
+        
+    } else if (categoryType === 'featured') {
+        // 2. SÁCH NỔI BẬT (Logic: Rating >= 4.5 hoặc do mình quy định)
+        document.title = "Sách nổi bật - BookStore";
+        if(titleElement) titleElement.textContent = "Sách nổi bật";
+        if(descElement) descElement.textContent = "Những cuốn sách được đánh giá cao nhất và yêu thích nhất";
+        if (typeof booksData !== 'undefined') {
+            // Lấy sách có rating cao (>= 4.5) làm sách nổi bật
+            books = booksData.filter(book => book.rating >= 4.5);
+        }
+
+    } else if (categoryType === 'bestseller') {
+        // 3. SÁCH BÁN CHẠY (Logic: isBestseller === true)
+        document.title = "Sách bán chạy - BookStore";
+        if(titleElement) titleElement.textContent = "Sách bán chạy";
+        if(descElement) descElement.textContent = "Các tác phẩm đang làm mưa làm gió trên thị trường";
+        if (typeof booksData !== 'undefined') {
+            books = booksData.filter(book => book.isBestseller === true);
+        }
+
     } else {
+        // 4. DANH MỤC THƯỜNG (Văn học, Kinh tế...)
         document.title = `${categoryType} - BookStore`;
         if(titleElement) titleElement.textContent = categoryType;
         
@@ -41,16 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 3. Hiển thị sách
+    // Hiển thị sách
     window.currentCategoryBooks = books; 
     displayCategoryBooks(books);
     
-    // Init Header Auth & Mobile Menu
     if (typeof updateHeaderUserInfo === 'function') updateHeaderUserInfo();
     if (typeof setupMobileMenu === 'function') setupMobileMenu();
 });
 
-// Hàm hiển thị sách
+// Hàm hiển thị sách (Giữ nguyên)
 function displayCategoryBooks(books) {
     const container = document.getElementById('category-books-grid');
     const countSpan = document.getElementById('book-count');
@@ -69,14 +89,11 @@ function displayCategoryBooks(books) {
         const hasDiscount = book.originalPrice > book.price;
         const discountPercent = hasDiscount ? Math.round((1 - book.price / book.originalPrice) * 100) : 0;
         
-        // Tạo thẻ div bằng JS để gán sự kiện onclick chuẩn xác nhất
         const bookDiv = document.createElement('div');
         bookDiv.className = 'book-card';
         bookDiv.style.cursor = 'pointer';
         
-        // SỰ KIỆN CLICK: Bấm vào thẻ là xem chi tiết ngay
         bookDiv.onclick = function(e) {
-            // Trừ khi bấm vào nút "Thêm giỏ" thì không chuyển trang
             if (!e.target.closest('.btn-add-cart')) {
                 viewDetail(book.id);
             }
@@ -106,7 +123,7 @@ function displayCategoryBooks(books) {
     });
 }
 
-// Hàm sắp xếp
+// Hàm sắp xếp (Giữ nguyên)
 function sortCategoryBooks(type) {
     let books = [...window.currentCategoryBooks];
     switch (type) {
@@ -117,11 +134,9 @@ function sortCategoryBooks(type) {
     displayCategoryBooks(books);
 }
 
-// ===== CÁC HÀM HỖ TRỢ (Viết trực tiếp vào đây để không phụ thuộc file khác) =====
-
+// Hàm hỗ trợ (Giữ nguyên)
 function viewDetail(bookId) {
     sessionStorage.setItem('selectedBookId', bookId);
-    // Vì đang ở trong folder pages/ nên link chỉ cần là product.html
     window.location.href = 'product.html'; 
 }
 

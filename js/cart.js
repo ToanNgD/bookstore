@@ -10,18 +10,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileMenu();
 });
 
+// (Giữ nguyên phần đầu file, chỉ thay hàm displayCartItems bên dưới)
+
 function displayCartItems() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById('cart-content');
     
+    // Nếu giỏ hàng trống
+    // Nếu giỏ hàng trống
     if (cart.length === 0) {
         cartContainer.innerHTML = `
-            <div style="text-align: center; padding: 50px;">
-                <i class="fas fa-shopping-cart" style="font-size: 64px; color: #95a5a6; margin-bottom: 20px;"></i>
-                <h3>Giỏ hàng trống</h3>
-                <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
-                <a href="../index.html" class="btn" style="margin-top: 20px;">
-                    <i class="fas fa-book"></i> Tiếp tục mua sắm
+            <div style="text-align: center; padding: 80px 20px;">
+                <img src="../images/empty-cart.png" 
+                     onerror="this.src='https://cdn-icons-png.flaticon.com/512/11329/11329060.png'" 
+                     style="width: 150px; margin: 0 auto 20px auto; display: block; opacity: 0.5;">
+                
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Giỏ hàng của bạn đang trống</h3>
+                <p style="color: #7f8c8d; margin-bottom: 25px;">Hãy chọn thêm sách để đọc nhé!</p>
+                
+                <a href="../index.html" class="btn" style="background: var(--gradient-primary); color: white; padding: 12px 30px; border-radius: 30px; display: inline-block;">
+                    <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
                 </a>
             </div>
         `;
@@ -31,86 +39,81 @@ function displayCartItems() {
     }
     
     let total = 0;
-    let cartHTML = `
-        <div class="cart-items">
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #f5f5f5;">
-                        <th style="padding: 15px; text-align: left;">Sản phẩm</th>
-                        <th style="padding: 15px; text-align: center;">Đơn giá</th>
-                        <th style="padding: 15px; text-align: center;">SL</th>
-                        <th style="padding: 15px; text-align: center;">Tiền</th>
-                        <th style="padding: 15px; text-align: center;">Xóa</th>
-                    </tr>
-                </thead>
-                <tbody>
-    `;
+    
+    // BẮT ĐẦU RENDER GIAO DIỆN MỚI
+    let html = `<div class="cart-page-container">`;
+    
+    // --- CỘT TRÁI: DANH SÁCH ---
+    html += `<div class="cart-left">`;
+    html += `<div class="cart-header-row">
+                <span>Sản phẩm (${cart.length})</span>
+            </div>`;
     
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         
-        cartHTML += `
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 15px;">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <img src="../${item.image}" alt="${item.title}" style="width: 60px; height: 80px; object-fit: cover; border-radius: 4px;">
-                        <div>
-                            <h4 style="margin-bottom: 5px; font-size: 14px;">${item.title}</h4>
-                            <p style="color: #7f8c8d; font-size: 12px;">${item.author}</p>
-                        </div>
+        html += `
+            <div class="cart-item">
+                <img src="../${item.image}" alt="${item.title}" class="cart-item-img" onclick="window.location.href='product.html'" style="cursor:pointer">
+                
+                <div class="cart-item-info">
+                    <div class="cart-item-title" onclick="window.location.href='product.html'" style="cursor:pointer">${item.title}</div>
+                    <div class="cart-item-author">${item.author}</div>
+                    <div class="cart-item-price">${item.price.toLocaleString('vi-VN')} đ</div>
+                </div>
+                
+                <div class="cart-item-actions">
+                    <div class="quantity-control">
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <input type="text" class="qty-input" value="${item.quantity}" readonly>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
                     </div>
-                </td>
-                <td style="padding: 15px; text-align: center; font-size: 14px;">
-                    ${item.price.toLocaleString('vi-VN')} đ
-                </td>
-                <td style="padding: 15px; text-align: center;">
-                    <div style="display: inline-flex; align-items: center; gap: 5px;">
-                        <button onclick="updateQuantity(${item.id}, -1)" style="width: 25px; height: 25px; border: 1px solid #ddd; background: white; border-radius: 4px;">-</button>
-                        <span style="min-width: 20px; text-align: center; font-size: 14px;">${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, 1)" style="width: 25px; height: 25px; border: 1px solid #ddd; background: white; border-radius: 4px;">+</button>
-                    </div>
-                </td>
-                <td style="padding: 15px; text-align: center; font-weight: bold; color: #e74c3c; font-size: 14px;">
-                    ${itemTotal.toLocaleString('vi-VN')} đ
-                </td>
-                <td style="padding: 15px; text-align: center;">
-                    <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #e74c3c; cursor: pointer;">
-                        <i class="fas fa-trash"></i>
+                    
+                    <button class="btn-remove" onclick="removeFromCart(${item.id})" title="Xóa sản phẩm">
+                        <i class="fas fa-trash-alt"></i>
                     </button>
-                </td>
-            </tr>
+                </div>
+            </div>
         `;
     });
     
-    cartHTML += `
-                </tbody>
-            </table>
-            
-            <div style="margin-top: 30px; padding: 25px; background-color: #f8f9fa; border-radius: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3>Tổng cộng:</h3>
-                    </div>
-                    <div style="font-size: 24px; font-weight: bold; color: #e74c3c;">
-                        ${total.toLocaleString('vi-VN')} đ
-                    </div>
+    html += `</div>`; // Đóng .cart-left
+    
+    // --- CỘT PHẢI: TỔNG KẾT ---
+    html += `
+        <div class="cart-right">
+            <div class="cart-summary">
+                <div class="summary-title">Thông tin đơn hàng</div>
+                
+                <div class="summary-row">
+                    <span>Tạm tính:</span>
+                    <span>${total.toLocaleString('vi-VN')} đ</span>
+                </div>
+                <div class="summary-row">
+                    <span>Phí vận chuyển:</span>
+                    <span style="color: #27ae60;">Miễn phí</span>
                 </div>
                 
-                <div style="display: flex; gap: 15px; margin-top: 25px; flex-direction: column;">
-                    <button onclick="checkout()" class="btn" style="width: 100%; background-color: #27ae60; padding: 15px;">
-                        <i class="fas fa-credit-card"></i> Thanh toán ngay
-                    </button>
-                    <a href="../index.html" class="btn" style="width: 100%; background-color: #95a5a6; padding: 15px; text-align: center;">
-                        <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
-                    </a>
+                <div class="summary-row total">
+                    <span>Tổng cộng:</span>
+                    <span>${total.toLocaleString('vi-VN')} đ</span>
                 </div>
+                
+                <p style="font-size: 13px; color: #95a5a6; margin-top: 10px; text-align: right;">(Đã bao gồm VAT nếu có)</p>
+                
+                <button onclick="checkout()" class="btn-checkout">Thanh toán ngay</button>
+                <a href="../index.html" class="btn-continue"><i class="fas fa-arrow-left"></i> Tiếp tục mua sách</a>
             </div>
         </div>
     `;
     
-    cartContainer.innerHTML = cartHTML;
+    html += `</div>`; // Đóng .cart-page-container
+    
+    cartContainer.innerHTML = html;
 }
+
+// (Giữ nguyên các hàm updateQuantity, removeFromCart... bên dưới)
 
 function updateQuantity(bookId, change) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -137,8 +140,42 @@ function removeFromCart(bookId) {
     else updateCartCount();
 }
 
+// Thay thế hàm checkout() cũ bằng hàm này:
+
 function checkout() {
-    alert('Chức năng thanh toán đang được phát triển!');
+    // 1. Kiểm tra xem người dùng đã đăng nhập chưa
+    // (window.authManager lấy từ file auth.js)
+    if (!window.authManager || !window.authManager.isLoggedIn()) {
+        
+        // Nếu chưa đăng nhập -> Thông báo lỗi
+        if (typeof showNotification === 'function') {
+            showNotification('Vui lòng đăng nhập để thanh toán!', 'error');
+        } else {
+            alert('Vui lòng đăng nhập để thanh toán!');
+        }
+        
+        // Chuyển hướng sang trang đăng nhập sau 1.5 giây
+        setTimeout(() => {
+            window.location.href = 'login.html'; 
+        }, 1500);
+        
+        return; // Dừng lại, không cho thanh toán
+    }
+
+    // 2. Nếu ĐÃ đăng nhập -> Xử lý thanh toán thành công (Giả lập)
+    if (typeof showNotification === 'function') {
+        showNotification('Đặt hàng thành công! Cảm ơn bạn.', 'success');
+    } else {
+        alert('Đặt hàng thành công! Cảm ơn bạn.');
+    }
+    
+    // Xóa sạch giỏ hàng sau khi mua xong
+    localStorage.removeItem('cart');
+    
+    // Tải lại trang để cập nhật giao diện giỏ hàng trống
+    setTimeout(() => {
+        window.location.reload();
+    }, 2000);
 }
 
 function updateCartCount() {

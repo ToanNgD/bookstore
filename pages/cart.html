@@ -80,51 +80,74 @@
     </header>
 
     <main class="container" style="padding: 40px 15px; min-height: 60vh;">
-        <h1 style="font-family: 'Montserrat', sans-serif; margin-bottom: 30px;">Giỏ hàng của bạn</h1>
+        <h1 style="font-family: 'Montserrat', sans-serif; margin-bottom: 30px; text-align: center;">Giỏ hàng của bạn</h1>
         
         <div id="cart-content">
-            <div style="text-align: center; padding: 50px;">
-                <i class="fas fa-shopping-cart" style="font-size: 64px; color: #95a5a6; margin-bottom: 20px;"></i>
-                <h3>Giỏ hàng trống</h3>
-                <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
-                <a href="../index.html" class="btn" style="margin-top: 20px;">
-                    <i class="fas fa-book"></i> Tiếp tục mua sắm
-                </a>
             </div>
-        </div>
     </main>
 
-    <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3><i class="fas fa-book"></i> BookStore</h3>
-                <p>Thiên đường sách dành cho mọi lứa tuổi.</p>
-                <div class="social-links">
-                   <a href="https://facebook.com/ngoc.toan.909532" target="_blank" title="Facebook BookStore">
-                     <i class="fab fa-facebook"></i>
-                   </a>
-                   <a href="#"><i class="fab fa-instagram"></i></a>
-                   <a href="#"><i class="fab fa-youtube"></i></a>
-                   <a href="#"><i class="fab fa-tiktok"></i></a>
+    <footer class="footer" id="contact-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-book"></i> BookStore</h3>
+                    <p>Thiên đường sách dành cho mọi lứa tuổi. Cam kết chất lượng và giá tốt nhất thị trường.</p>
+                    <div class="social-links">
+                       <a href="https://facebook.com/ngoc.toan.909532" target="_blank" title="Facebook BookStore"><i class="fab fa-facebook"></i></a>
+                       <a href="#"><i class="fab fa-instagram"></i></a>
+                       <a href="#"><i class="fab fa-youtube"></i></a>
+                       <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Thông tin</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                        <li><a href="#">Hướng dẫn đổi trả</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="#">Trung tâm trợ giúp</a></li>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                        <li><a href="#">Kiểm tra đơn hàng</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liên hệ</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 43 Chùa Bộc, Đống Đa, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 0987 685 442</li>
+                        <li><i class="fas fa-envelope"></i> info@bookstore.vn</li>
+                        <li><i class="fas fa-clock"></i> 8:00 - 22:00 (T2 - CN)</li>
+                    </ul>
+                    <div class="map-link" style="margin-top: 15px;">
+                        <a href="https://maps.google.com/?q=43+Chùa+Bộc,+Đống+Đa,+Hà+Nội" target="_blank" style="color: #3498db; text-decoration: none;">
+                            <i class="fas fa-map-marked-alt"></i> Xem trên bản đồ
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-col">
-                <h3>Liên hệ</h3>
-                <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> 43 Chùa Bộc, Đống Đa, Hà Nội</li>
-                    <li><i class="fas fa-phone"></i> 0987 685 442</li>
-                    <li><i class="fas fa-envelope"></i> info@bookstore.vn</li>
-                </ul>
+            <div class="footer-bottom">
+                <p>Copyright © 2025 BookStore. All rights reserved.</p>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>Copyright &copy; 2025 BookStore</p>
-        </div>
-    </div>
     </footer>
+
+    <div class="auth-notification" id="notification">
+        <span id="notificationMessage"></span>
+        <button onclick="closeNotification()"><i class="fas fa-times"></i></button>
+    </div>
 
     <script src="../js/data.js"></script>
     <script src="../js/auth.js"></script>

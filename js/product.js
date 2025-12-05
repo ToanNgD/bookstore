@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // --- SETUP MENU MOBILE (CODE MỚI THÊM) ---
+    // --- SETUP MENU MOBILE ---
     setupMobileMenu();
-    // ----------------------------------------
+    // ------------------------
 
     const productContainer = document.getElementById('product-detail');
     
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // RENDER CHI TIẾT SÁCH
     productContainer.innerHTML = `
         <div class="product-detail-container" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-top: 20px;">
+            
             <div class="product-image">
                 <img src="../${book.image}" alt="${book.title}" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                ${hasDiscount ? `<div style="background-color: #e74c3c; color: white; padding: 8px 15px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: bold;">-${discountPercent}% Giảm</div>` : ''}
             </div>
             
             <div class="product-info">
@@ -67,15 +67,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 
-                <div class="price-section" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #eee;">
-                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
-                        <div style="font-size: 28px; font-weight: bold; color: #e74c3c;">
-                            ${book.price.toLocaleString('vi-VN')} đ
+                <div class="price-section" style="background-color: #fafafa; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; flex-wrap: wrap;">
+                        
+                        <div style="font-size: 32px; font-weight: 700; color: #d0011b;">
+                            ${book.price.toLocaleString('vi-VN')} ₫
                         </div>
-                        ${hasDiscount ? `<div style="font-size: 18px; color: #95a5a6; text-decoration: line-through;">${book.originalPrice.toLocaleString('vi-VN')} đ</div>` : ''}
+                        
+                        ${hasDiscount ? `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="font-size: 16px; color: #929292; text-decoration: line-through;">
+                                    ${book.originalPrice.toLocaleString('vi-VN')} ₫
+                                </div>
+                                <div style="
+                                    background: #fff0f1; 
+                                    color: #d0011b; 
+                                    border: 1px solid #d0011b;
+                                    padding: 2px 6px; 
+                                    border-radius: 2px; 
+                                    font-size: 12px; 
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                ">
+                                    -${discountPercent}%
+                                </div>
+                            </div>
+                        ` : ''}
                     </div>
-                    <p style="color: #27ae60; font-size: 14px; margin: 0;">
-                        <i class="fas fa-check-circle"></i> Còn hàng - Giao hàng toàn quốc
+                    
+                    <p style="color: #27ae60; font-size: 14px; margin: 0; display: flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-truck-fast"></i> Miễn phí vận chuyển cho đơn từ 200k
                     </p>
                 </div>
                 
@@ -85,10 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 
                 <div class="product-actions" style="display: flex; gap: 15px;">
-                    <button onclick="addToCart(${book.id})" class="btn" style="flex: 1; padding: 15px; font-size: 16px; background-color: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                    <button onclick="addToCart(${book.id})" class="btn" style="flex: 1; padding: 15px; font-size: 16px; background-color: #e8f6fd; color: #3498db; border: 1px solid #3498db; border-radius: 4px; cursor: pointer; font-weight: 600;">
                         <i class="fas fa-cart-plus"></i> Thêm vào giỏ
                     </button>
-                    <button onclick="buyNow(${book.id})" class="btn" style="flex: 1; padding: 15px; font-size: 16px; background-color: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                    <button onclick="buyNow(${book.id})" class="btn" style="flex: 1; padding: 15px; font-size: 16px; background-color: #d0011b; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
                         Mua ngay
                     </button>
                 </div>
@@ -114,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     style.innerHTML = `
         @media (max-width: 768px) {
             .product-detail-container { grid-template-columns: 1fr !important; gap: 20px !important; }
-            .product-actions { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; margin: 0 !important; }
+            .product-actions { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 10px 15px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 1000; margin: 0 !important; border-top: 1px solid #eee; }
             .footer { padding-bottom: 90px; } /* Đẩy footer lên để không bị nút che */
         }
     `;

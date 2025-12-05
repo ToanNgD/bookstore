@@ -194,53 +194,89 @@
 
         <section class="featured-section" id="featured-section">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-star"></i> Sách nổi bật</h2>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-star"></i> Sách nổi bật</h2>
+                    <a href="pages/category.html?type=featured" class="btn-see-all">
+                        <span>Xem tất cả</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 <div class="books-grid" id="featured-books"></div>
             </div>
         </section>
 
         <section class="bestseller-section" id="bestseller-section">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-fire"></i> Sách bán chạy</h2>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-fire"></i> Sách bán chạy</h2>
+                    <a href="pages/category.html?type=bestseller" class="btn-see-all">
+                        <span>Xem tất cả</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 <div class="books-grid" id="bestseller-books"></div>
             </div>
         </section>
 
         <section class="about-section" id="about-section">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> Giới thiệu BookStore</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>Chào mừng đến với BookStore!</h3>
-                        <p>BookStore là trang web bán sách trực tuyến hàng đầu, cung cấp đa dạng các thể loại sách từ văn học, kinh tế, kỹ năng đến sách thiếu nhi, ngoại ngữ và giáo khoa.</p>
-                        <p>Với phương châm <strong>"Mang tri thức đến mọi nhà"</strong>, chúng tôi cam kết:</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Cung cấp sách chất lượng với giá cả hợp lý</li>
-                            <li><i class="fas fa-check-circle"></i> Giao hàng nhanh chóng trên toàn quốc</li>
-                            <li><i class="fas fa-check-circle"></i> Hỗ trợ khách hàng 24/7</li>
-                            <li><i class="fas fa-check-circle"></i> Đổi trả sách dễ dàng trong 7 ngày</li>
-                        </ul>
+                <div class="about-wrapper">
+                    <div class="about-image-col">
+                        <div class="about-img-box">
+                            <img src="images/banners/banner3.jpg" alt="Không gian BookStore">
+                            <div class="experience-badge">
+                                <span class="years">5+</span>
+                                <span class="text">Năm<br>Hoạt động</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <i class="fas fa-book-open"></i>
-                            <h3>10,000+</h3>
-                            <p>Đầu sách đa dạng</p>
+
+                    <div class="about-content-col">
+                        <h4 class="sub-title">Về BookStore</h4>
+                        <h2 class="main-title">Mang tri thức đến mọi nhà</h2>
+                        <p class="desc">
+                            BookStore không chỉ là nơi bán sách, mà là điểm dừng chân cho những tâm hồn yêu chữ. Chúng tôi tin rằng mỗi cuốn sách là một người bạn, một người thầy và là cánh cửa mở ra thế giới mới.
+                        </p>
+
+                        <div class="about-features-grid">
+                            <div class="feat-item">
+                                <i class="fas fa-medal"></i>
+                                <div>
+                                    <h5>100% Chính hãng</h5>
+                                    <p>Sách thật, chất lượng cao</p>
+                                </div>
+                            </div>
+                            <div class="feat-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <div>
+                                    <h5>Giao hàng nhanh</h5>
+                                    <p>Vận chuyển toàn quốc</p>
+                                </div>
+                            </div>
+                            <div class="feat-item">
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <h5>Hỗ trợ 24/7</h5>
+                                    <p>Tư vấn tận tâm</p>
+                                </div>
+                            </div>
+                            <div class="feat-item">
+                                <i class="fas fa-undo-alt"></i>
+                                <div>
+                                    <h5>Đổi trả dễ dàng</h5>
+                                    <p>Trong vòng 7 ngày</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <i class="fas fa-users"></i>
-                            <h3>50,000+</h3>
-                            <p>Khách hàng tin tưởng</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-shipping-fast"></i>
-                            <h3>63</h3>
-                            <p>Tỉnh thành giao hàng</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-star"></i>
-                            <h3>4.9/5</h3>
-                            <p>Đánh giá từ khách hàng</p>
+
+                        <div class="about-stats-row">
+                            <div class="stat-box">
+                                <strong>10k+</strong> <span>Đầu sách</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>50k+</strong> <span>Khách hàng</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>4.9</strong> <span style="color: #f39c12;"><i class="fas fa-star"></i> Đánh giá</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,24 +287,27 @@
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-gift"></i> Khuyến mãi hot</h2>
                 <div class="promotion-grid">
+                    
                     <div class="promotion-card">
                         <div class="promotion-badge">-30%</div>
                         <img src="images/books/nhagiakim.jpg" alt="Khuyến mãi 1">
                         <div class="promotion-content">
                             <h3>Combo sách văn học</h3>
                             <p>Mua 3 tặng 1 + Free ship</p>
-                            <a href="#" class="btn-promotion">Chi tiết</a>
+                            <a href="pages/category.html?type=Văn học" class="btn-promotion">Chi tiết</a>
                         </div>
                     </div>
+
                     <div class="promotion-card">
                         <div class="promotion-badge">Freeship</div>
                         <img src="images/books/bogia.jpg" alt="Khuyến mãi 2">
                         <div class="promotion-content">
                             <h3>Đơn hàng từ 200k</h3>
                             <p>Miễn phí vận chuyển toàn quốc</p>
-                            <a href="#" class="btn-promotion">Mua ngay</a>
+                            <a href="pages/category.html?type=all" class="btn-promotion">Mua ngay</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

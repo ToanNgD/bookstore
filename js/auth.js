@@ -32,6 +32,24 @@ class AuthManager {
         if (user) { this.setCurrentUser(user); return user; }
         return null;
     }
+
+    // ... các hàm cũ init, register, login ...
+
+    // THÊM HÀM NÀY VÀO TRONG CLASS AuthManager
+    resetPassword(emailOrPhone, newPassword) {
+        const users = this.getUsers();
+        const index = users.findIndex(u => u.email === emailOrPhone || u.phone === emailOrPhone);
+        
+        if (index !== -1) {
+            users[index].password = newPassword;
+            this.saveUsers(users);
+            return true; // Đổi thành công
+        }
+        return false; // Không tìm thấy user
+    }
+
+    // ... các hàm cũ logout, getCurrentUser ...
+
     logout() { localStorage.removeItem(this.currentUserKey); updateHeaderUserInfo(); }
     getCurrentUser() { const userStr = localStorage.getItem(this.currentUserKey); return userStr ? JSON.parse(userStr) : null; }
     setCurrentUser(user) { localStorage.setItem(this.currentUserKey, JSON.stringify(user)); updateHeaderUserInfo(); }
