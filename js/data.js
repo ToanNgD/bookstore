@@ -11,7 +11,13 @@ const booksData = [
         category: "Văn học",
         rating: 4.8,
         description: "Câu chuyện về hành trình theo đuổi ước mơ của chàng trai chăn cừu Santiago.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 2,
@@ -23,7 +29,13 @@ const booksData = [
         category: "Kỹ năng",
         rating: 4.9,
         description: "Cuốn sách kinh điển về nghệ thuật thu phục lòng người.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 3,
@@ -35,7 +47,13 @@ const booksData = [
         category: "Kỹ năng",
         rating: 4.7,
         description: "Hành trang cho tuổi trẻ trên con đường tự học và trưởng thành.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 4,
@@ -47,7 +65,13 @@ const booksData = [
         category: "Văn học",
         rating: 4.8,
         description: "Tiểu thuyết nổi tiếng về thế giới mafia tại Mỹ.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 5,
@@ -59,7 +83,13 @@ const booksData = [
         category: "Kinh tế",
         rating: 4.6,
         description: "Phương pháp khởi nghiệp hiệu quả cho startup.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 6,
@@ -71,7 +101,13 @@ const booksData = [
         category: "Thiếu nhi",
         rating: 4.9,
         description: "Cuộc phiêu lưu kỳ diệu của cậu bé phù thủy Harry Potter.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 7,
@@ -83,7 +119,13 @@ const booksData = [
         category: "Ngoại ngữ",
         rating: 4.5,
         description: "Giáo trình học tiếng Anh từ cơ bản đến nâng cao.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 8,
@@ -95,7 +137,13 @@ const booksData = [
         category: "Giáo khoa",
         rating: 4.3,
         description: "Sách giáo khoa toán nâng cao lớp 10.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     
     // --- 8 QUYỂN MỚI THÊM ---
@@ -109,7 +157,13 @@ const booksData = [
         category: "Văn học",
         rating: 4.9,
         description: "Câu chuyện tình yêu tuổi học trò đầy tiếc nuối và hoài niệm qua ngòi bút của Nguyễn Nhật Ánh.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 10,
@@ -121,7 +175,13 @@ const booksData = [
         category: "Kinh tế",
         rating: 4.7,
         description: "Tư duy tài chính khác biệt giữa người giàu và người nghèo.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 11,
@@ -133,7 +193,13 @@ const booksData = [
         category: "Kỹ năng",
         rating: 4.6,
         description: "Những bài học nhẹ nhàng, hài hước giúp bạn nhìn cuộc sống tích cực hơn.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 12,
@@ -145,7 +211,13 @@ const booksData = [
         category: "Thiếu nhi",
         rating: 5.0,
         description: "Tác phẩm văn học thiếu nhi kinh điển của Việt Nam về những chuyến đi của Dế Mèn.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 13,
@@ -157,7 +229,13 @@ const booksData = [
         category: "Thiếu nhi",
         rating: 4.8,
         description: "Một câu chuyện triết lý sâu sắc được kể dưới lăng kính trẻ thơ.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 14,
@@ -169,7 +247,13 @@ const booksData = [
         category: "Kinh tế",
         rating: 4.7,
         description: "Cuốn sách 'gối đầu giường' cho các nhà đầu tư chứng khoán giá trị.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 15,
@@ -181,7 +265,13 @@ const booksData = [
         category: "Kỹ năng",
         rating: 4.5,
         description: "Khám phá thế giới nội tâm và hành vi của tội phạm qua góc nhìn tâm lý học.",
-        isBestseller: true
+        isBestseller: true,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     },
     {
         id: 16,
@@ -193,6 +283,12 @@ const booksData = [
         category: "Văn học",
         rating: 4.6,
         description: "Tiểu thuyết nổi tiếng nhất của Haruki Murakami về tình yêu và sự mất mát.",
-        isBestseller: false
+        isBestseller: false,
+        previewImages: [
+            "images/books/nhagiakim.jpg", 
+            "images/primages/nhagiakim/nhagiakim1.jpg",
+            "images/primages/nhagiakim/nhagiakim2.jpg",
+            "images/primages/nhagiakim/nhagiakim3.jpg"
+        ]
     }
 ];
